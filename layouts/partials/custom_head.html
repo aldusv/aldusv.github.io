@@ -1,0 +1,27 @@
+{{ if or .Params.math .Site.Params.math }}
+  <!-- KaTeX CSS -->
+  <link rel="stylesheet"
+        href="/vendor/katex/katex.min.css">
+
+  <!-- KaTeX core -->
+  <script defer
+        src="/vendor/katex/katex.min.js"></script>
+
+  <!-- Auto-render extension -->
+  <script defer
+        src="/vendor/katex/contrib/auto-render.min.js"></script>
+
+  <!-- Initialise KaTeX after DOM is ready -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var root = document.querySelector('main') || document.body;
+      renderMathInElement(root, {
+        delimiters: [
+          {left: "$$", right: "$$", display: true},
+          {left: "$",  right: "$",  display: false}
+        ],
+        throwOnError: false
+      });
+    });
+  </script>
+{{ end }}
